@@ -1,0 +1,167 @@
+{
+  "modes": [
+    {
+      "slug": "surf",
+      "title": "Surf Lessons",
+      "badge": "Water Sports",
+      "description": "Choose a surf school and use the VoucherHub code at checkout.",
+      "partners": [
+        {
+          "name": "Surf Wave Lisbon",
+          "partner_slug": "surf-wave-lisbon",
+          "location": "Cabana do Pescador, Costa da Caparica",
+          "price_original": "€30",
+          "price_discount": "€25,5",
+          "savings": "Save €4,5",
+          "discount_label": "15% OFF",
+          "code": "Raposo15",
+          "official_url": "https://surfwavelisbon.com/",
+          "images": [
+            "https://surfwavelisbon.com/wp-content/uploads/2024/02/DSC6244-1536x1024.jpg",
+            "https://surfwavelisbon.com/wp-content/uploads/2025/09/andrehilariophoto_fullres_DSC5835-1536x1024.jpg",
+            "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5114-1-1536x1024.jpg",
+            "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5903-scaled.jpg",
+            "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5235-copy-1536x1024.jpg"
+            
+          ],
+          "icon": "fas fa-water"
+        }
+      ]
+    },
+    {
+      "slug": "Moda",
+      "title": "Vestuário moda",
+      "badge": "Vestuário Moda",
+      "description": "Partner clothing stores with exclusive discounts.",
+      "partners": [
+        {
+          "name": "Twolines",
+          "partner_slug": "twolines",
+          "location": "Costa da Caparica",
+          "price_original": "€67,83",
+          "price_discount": "€54,27",
+          "savings": "Save €13,56",
+          "discount_label": "20% OFF",
+          "code": "SURF20",
+          "official_url": "https://twolines.pt/",
+          "images": [
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1759862656/IMG-20251002-WA0022_dqc6m5.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1759862655/IMG-20251002-WA0021_sq0cgy.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1759862655/IMG-20251002-WA0020_dsvvsi.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1759862655/IMG-20251002-WA0019_tnybfq.jpg"
+          ],
+          "icon": "fas fa-tshirt"
+        }
+      ]
+    },
+    {
+      "slug": "kitesurf",
+      "title": "Kitesurf Lessons",
+      "badge": "Extreme Sports",
+      "description": "Partner kitesurf schools with exclusive discounts.",
+      "partners": [
+        {
+          "name": "Caparica Kite Center",
+          "partner_slug": "caparica-kite-center",
+          "location": "Costa da Caparica",
+          "price_original": "€85",
+          "price_discount": "€68",
+          "savings": "Save €17",
+          "discount_label": "20% OFF",
+          "code": "KITE15",
+          "official_url": "https://escola-de-kitesurf.pt",
+          "images": [
+            "https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg",
+            "https://images.pexels.com/photos/1604794/pexels-photo-1604794.jpeg",
+            "https://images.pexels.com/photos/1620416/pexels-photo-1620416.jpeg",
+            "https://images.pexels.com/photos/1599921/pexels-photo-1599921.jpeg",
+            "https://images.pexels.com/photos/1563211/pexels-photo-1563211.jpeg"
+          ],
+          "icon": "fas fa-wind"
+        }
+      ]
+    },
+    {
+      "slug": "quad",
+      "title": "Quad Bike Tour",
+      "badge": "Adventure",
+      "description": "Explore Sintra trails at a discount.",
+      "partners": [
+        {
+          "name": "Sintra Quad Adventures",
+          "partner_slug": "sintra-quad-adventures",
+          "location": "Serra de Sintra",
+          "price_original": "€55",
+          "price_discount": "€44",
+          "savings": "Save €11",
+          "discount_label": "20% OFF",
+          "code": "QUAD10",
+          "official_url": "https://quad-sintra.com",
+          "images": [
+            "https://images.pexels.com/photos/5976712/pexels-photo-5976712.jpeg",
+            "https://images.pexels.com/photos/1135198/pexels-photo-1135198.jpeg",
+            "https://images.pexels.com/photos/1135197/pexels-photo-1135197.jpeg",
+            "https://images.pexels.com/photos/209892/pexels-photo-209892.jpeg",
+            "https://images.pexels.com/photos/11020074/pexels-photo-11020074.jpeg"
+          ],
+          "icon": "fas fa-mountain"
+        }
+      ]
+    },
+    {
+      "slug": "tour guide and driver",
+      "title": "Guide and Driver",
+      "badge": "Culture & History",
+      "description": "Driver tours through historic neighborhoods with a local guide.",
+      "partners": [
+        {
+          "name": "Nanan Adventures",
+          "partner_slug": "nanan-adventures",
+          "location": "Sintra",
+          "price_original": "€30",
+          "price_discount": "€24",
+          "savings": "Save €6",
+          "discount_label": "20% OFF",
+          "code": "LISBOA20",
+          "official_url": "https://www.nananadventures.com/",
+          "images": [
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1761544226/IMG-20251007-WA0014_auqqnt.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1761544226/IMG-20251027-WA0006_imjcoh.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1761544226/IMG-20251027-WA0005_ygbi4k.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1761544226/IMG-20251027-WA0003_xqxcyx.jpg"
+          ],
+          "icon": "fas fa-car"
+        }
+      ]
+    },
+    {
+      "slug": "yoga",
+      "title": "Yoga Studios",
+      "badge": "Wellness",
+      "description": "Yoga classes in Lisbon at a discount.",
+      "partners": [
+        {
+          "name": "Yoga Kula ",
+          "partner_slug": "yoga-kula",
+          "location": "Benfica, Lisboa",
+          "price_original": "€15",
+          "price_discount": "€12,75",
+          "savings": "Save €2,25",
+          "discount_label": "15% OFF",
+          "code": "YOGA20",
+          "qrcode_url": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=YOGA20",
+          "official_url": "https://yogakulastudio.pt/",
+          "images": [
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1742932207/logoSemFundo_mrfs2z.png",
+            "https://i.pinimg.com/736x/6a/86/3e/6a863edd0e7355873024260ab9fc742c.jpg",
+            "https://res.cloudinary.com/dqn2v9mtu/image/upload/v1759782464/IMG-20250929-WA0001_r45exm.jpg",
+            "https://i.pinimg.com/736x/14/fc/89/14fc8971e3bf1a626ae5322fbb247aec.jpg",
+            "https://i.pinimg.com/736x/b8/6c/66/b86c669e87669cfce3c09a25364d3272.jpg"
+          ],
+          "icon": "fas fa-spa"
+        }
+        
+      ]
+    }
+  ]
+}
