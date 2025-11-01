@@ -1,6 +1,7 @@
 import { useI18n } from '@/lib/i18n';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 
 export const Navbar = () => {
   const { lang, setLang, t } = useI18n();
@@ -10,10 +11,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="text-2xl">🎫</span>
-            <span className="font-display text-2xl font-bold">
-              Voucher<span className="text-secondary">Hub</span>
-            </span>
+            <img src={logo} alt="VoucherHub Logo" className="h-8" />
           </Link>
 
           <div className="flex items-center gap-3">
