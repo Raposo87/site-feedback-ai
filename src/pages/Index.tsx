@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { ExperienceCard } from '@/components/ExperienceCard';
+import { CategoryCard } from '@/components/CategoryCard';
 import { HowItWorks } from '@/components/HowItWorks';
 import { Footer } from '@/components/Footer';
 import { useI18n, loadTranslations } from '@/lib/i18n';
@@ -9,7 +9,7 @@ import { Experience } from '@/types/experience';
 
 const Index = () => {
   const { t } = useI18n();
-  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [categories, setCategories] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ const Index = () => {
       try {
         const response = await fetch('/data/experiences.json');
         const data = await response.json();
-        setExperiences(data.modes || []);
+        setCategories(data.modes || []);
       } catch (error) {
-        console.error('Failed to load experiences:', error);
+        console.error('Failed to load categories:', error);
       } finally {
         setLoading(false);
       }
@@ -38,12 +38,11 @@ const Index = () => {
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 
-              className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              dangerouslySetInnerHTML={{ __html: t('experiences.title') }}
-            />
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Explore as Categorias
+            </h2>
             <p className="text-lg text-muted-foreground">
-              {t('experiences.subtitle')}
+              Escolha uma categoria e descubra ofertas exclusivas
             </p>
           </div>
 
@@ -55,8 +54,8 @@ const Index = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {experiences.map((experience) => (
-                <ExperienceCard key={experience.slug} experience={experience} />
+              {categories.map((category) => (
+                <CategoryCard key={category.slug} category={category} />
               ))}
             </div>
           )}
