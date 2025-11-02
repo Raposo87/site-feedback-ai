@@ -171,18 +171,11 @@ const Category = () => {
                     </div>
                   </div>
 
-                  <Button 
-                    className="w-full" 
-                    asChild
-                  >
-                    <a 
-                      href={partner.official_url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Veja as ofertas à venda
-                    </a>
-                  </Button>
+                  <Link to={`/partner?slug=${partner.partner_slug}&category=${category.slug}`}>
+                    <Button className="w-full">
+                      Ver detalhes da oferta
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             ))}
