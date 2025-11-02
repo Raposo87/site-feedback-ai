@@ -3,14 +3,24 @@ import { Badge } from './ui/badge';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Experience } from '@/types/experience';
+import { useI18n } from '@/lib/i18n';
 
 interface CategoryCardProps {
   category: Experience;
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
+  const { lang, t } = useI18n();
   const firstPartner = category.partners[0];
   const images = firstPartner?.images || [];
+
+  // Helper function to get translated text
+  const getTranslated = (field: any): string => {
+    if (typeof field === 'object' && field !== null) {
+      return field[lang] || field.en || '';
+    }
+    return field || '';
+  };
 
   return (
     <Link to={`/category?slug=${category.slug}`}>
@@ -19,7 +29,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
           {images.length > 0 ? (
             <img
               src={images[0]}
-              alt={category.title}
+              alt={getTranslated(category.title)}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               onError={(e) => {
                 e.currentTarget.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800';
@@ -34,7 +44,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
           {firstPartner?.discount_label && (
             <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-orange-500 text-white text-sm font-bold shadow-lg">
               <span className="mr-1">🔥</span>
-              Popular
+              {lang === 'pt' ? 'Popular' : 'Popular'}
             </div>
           )}
         </div>
@@ -45,21 +55,21 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
               {firstPartner?.icon && <i className={firstPartner.icon} />}
             </div>
             <Badge variant="secondary" className="text-xs">
-              {category.badge}
+              {getTranslated(category.badge)}
             </Badge>
           </div>
 
           <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
-            {category.title}
+            {getTranslated(category.title)}
           </h3>
 
           <p className="text-sm text-muted-foreground line-clamp-2">
-            {category.description}
+            {getTranslated(category.description)}
           </p>
 
           <div className="flex items-center justify-between pt-2">
             <span className="text-sm text-muted-foreground">
-              {category.partners.length} {category.partners.length === 1 ? 'oferta' : 'ofertas'}
+              {category.partners.length} {category.partners.length === 1 ? t('experiencePage.offers') : t('experiencePage.offersPlural')}
             </span>
             <ChevronRight className="h-5 w-5 text-primary transition-transform group-hover:translate-x-1" />
           </div>

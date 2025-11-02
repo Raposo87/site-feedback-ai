@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Partner as PartnerType, Experience } from '@/types/experience';
 import { Copy, Check, ExternalLink, ChevronRight, MapPin, Tag } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useI18n } from '@/lib/i18n';
 
 const Partner = () => {
   const [searchParams] = useSearchParams();
@@ -18,6 +19,7 @@ const Partner = () => {
   const [copiedCode, setCopiedCode] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const { toast } = useToast();
+  const { lang } = useI18n();
 
   useEffect(() => {
     const loadPartner = async () => {
@@ -50,8 +52,8 @@ const Partner = () => {
       await navigator.clipboard.writeText(partner.code);
       setCopiedCode(true);
       toast({
-        title: "Código copiado!",
-        description: "O código foi copiado para a área de transferência",
+        title: lang === 'pt' ? 'Código copiado!' : 'Code copied!',
+        description: lang === 'pt' ? 'O código foi copiado para a área de transferência' : 'The code was copied to clipboard',
       });
       setTimeout(() => setCopiedCode(false), 2000);
     } catch (err) {
@@ -59,14 +61,22 @@ const Partner = () => {
     }
   };
 
+  // Helper function to get translated text
+  const getTranslated = (field: any): string => {
+    if (typeof field === 'object' && field !== null) {
+      return field[lang] || field.en || '';
+    }
+    return field || '';
+  };
+
   if (!partner || !category) {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Parceiro não encontrado</h1>
+          <h1 className="text-4xl font-bold mb-4">{lang === 'pt' ? 'Parceiro não encontrado' : 'Partner not found'}</h1>
           <Link to="/">
-            <Button>Voltar à página inicial</Button>
+            <Button>{lang === 'pt' ? 'Voltar à página inicial' : 'Back to homepage'}</Button>
           </Link>
         </div>
         <Footer />
@@ -83,14 +93,14 @@ const Partner = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-sm text-muted-foreground">
             <Link to="/" className="hover:text-primary transition-colors">
-              Início
+              {lang === 'pt' ? 'Início' : 'Home'}
             </Link>
             <ChevronRight className="h-4 w-4" />
             <Link 
               to={`/category?slug=${category.slug}`}
               className="hover:text-primary transition-colors"
             >
-              {category.title}
+              {getTranslated(category.title)}
             </Link>
             <ChevronRight className="h-4 w-4" />
             <span className="text-foreground font-medium">{partner.name}</span>
@@ -158,14 +168,14 @@ const Partner = () => {
             <div className="space-y-6">
               <div>
                 <Badge variant="secondary" className="mb-3">
-                  {category.badge}
+                  {getTranslated(category.badge)}
                 </Badge>
                 <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
                   {partner.name}
                 </h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="h-5 w-5" />
-                  <span className="text-lg">{partner.location}</span>
+                  <span className="text-lg">{getTranslated(partner.location)}</span>
                 </div>
               </div>
 
@@ -183,7 +193,7 @@ const Partner = () => {
                   
                   <div className="flex items-center gap-2">
                     <Badge className="bg-green-500 text-white text-base px-3 py-1">
-                      Economize {partner.savings.replace('Save ', '')}
+                      {getTranslated(partner.savings)}
                     </Badge>
                   </div>
 
@@ -192,7 +202,7 @@ const Partner = () => {
                     <div className="flex items-center gap-2 mb-2">
                       <Tag className="h-4 w-4 text-primary" />
                       <span className="text-sm font-medium text-muted-foreground">
-                        Código promocional:
+                        {lang === 'pt' ? 'Código promocional:' : 'Promo code:'}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -225,7 +235,7 @@ const Partner = () => {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
                     >
-                      Ver ofertas no site oficial
+                      {lang === 'pt' ? 'Ver ofertas no site oficial' : 'View offers on official website'}
                       <ExternalLink className="h-5 w-5" />
                     </a>
                   </Button>
@@ -236,7 +246,7 @@ const Partner = () => {
               {partner.detailed_description && (
                 <Card className="p-6">
                   <h2 className="font-display text-2xl font-semibold mb-4">
-                    Sobre {partner.name}
+                    {lang === 'pt' ? `Sobre ${partner.name}` : `About ${partner.name}`}
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     {partner.detailed_description}
@@ -246,12 +256,14 @@ const Partner = () => {
 
               {/* Additional Info */}
               <Card className="p-6 bg-muted/30">
-                <h3 className="font-semibold mb-3">Como usar o desconto:</h3>
+                <h3 className="font-semibold mb-3">
+                  {lang === 'pt' ? 'Como usar o desconto:' : 'How to use the discount:'}
+                </h3>
                 <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
-                  <li>Copie o código promocional acima</li>
-                  <li>Clique em "Ver ofertas no site oficial"</li>
-                  <li>Escolha sua experiência</li>
-                  <li>Cole o código no checkout para receber o desconto</li>
+                  <li>{lang === 'pt' ? 'Copie o código promocional acima' : 'Copy the promo code above'}</li>
+                  <li>{lang === 'pt' ? 'Clique em "Ver ofertas no site oficial"' : 'Click "View offers on official website"'}</li>
+                  <li>{lang === 'pt' ? 'Escolha sua experiência' : 'Choose your experience'}</li>
+                  <li>{lang === 'pt' ? 'Cole o código no checkout para receber o desconto' : 'Paste the code at checkout to receive the discount'}</li>
                 </ol>
               </Card>
             </div>

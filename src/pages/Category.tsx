@@ -16,7 +16,7 @@ const Category = () => {
   const [category, setCategory] = useState<Experience | null>(null);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const { toast } = useToast();
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
 
   useEffect(() => {
     const loadCategory = async () => {
@@ -40,8 +40,8 @@ const Category = () => {
       await navigator.clipboard.writeText(code);
       setCopiedCode(code);
       toast({
-        title: "Código copiado!",
-        description: "O código foi copiado para a área de transferência",
+        title: t('toast.codeCopied'),
+        description: t('toast.codeCopied'),
       });
       setTimeout(() => setCopiedCode(null), 2000);
     } catch (err) {
@@ -49,14 +49,22 @@ const Category = () => {
     }
   };
 
+  // Helper function to get translated text
+  const getTranslated = (field: any): string => {
+    if (typeof field === 'object' && field !== null) {
+      return field[lang] || field.en || '';
+    }
+    return field || '';
+  };
+
   if (!category) {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Categoria não encontrada</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('experiencePage.notFound')}</h1>
           <Link to="/">
-            <Button>Voltar à página inicial</Button>
+            <Button>{t('experiencePage.home')}</Button>
           </Link>
         </div>
         <Footer />
@@ -73,7 +81,7 @@ const Category = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-6 transition-colors">
             <ArrowLeft className="h-4 w-4" />
-            Voltar às categorias
+            {lang === 'pt' ? 'Voltar às categorias' : 'Back to categories'}
           </Link>
           
           <div className="flex items-center gap-3 mb-4">
@@ -81,15 +89,15 @@ const Category = () => {
               {category.partners[0]?.icon && <i className={category.partners[0].icon} />}
             </div>
             <Badge variant="secondary" className="text-base">
-              {category.badge}
+              {getTranslated(category.badge)}
             </Badge>
           </div>
           
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-            {category.title}
+            {getTranslated(category.title)}
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            {category.description}
+            {getTranslated(category.description)}
           </p>
         </div>
       </section>
@@ -129,7 +137,7 @@ const Category = () => {
                       {partner.name}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      📍 {partner.location}
+                      📍 {getTranslated(partner.location)}
                     </p>
                   </div>
 
@@ -143,14 +151,14 @@ const Category = () => {
                   </div>
 
                   <div className="text-sm font-medium text-green-600">
-                    Economize {partner.savings.replace('Save ', '')}
+                    {getTranslated(partner.savings)}
                   </div>
 
                   <div className="bg-muted rounded-lg p-3">
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="text-xs text-muted-foreground mb-1">
-                          Código promocional:
+                          {lang === 'pt' ? 'Código promocional:' : 'Promo code:'}
                         </div>
                         <div className="font-mono font-bold text-lg">
                           {partner.code}
@@ -173,7 +181,7 @@ const Category = () => {
 
                   <Link to={`/partner?slug=${partner.partner_slug}&category=${category.slug}`}>
                     <Button className="w-full">
-                      Ver detalhes da oferta
+                      {lang === 'pt' ? 'Ver detalhes da oferta' : 'View offer details'}
                     </Button>
                   </Link>
                 </div>
