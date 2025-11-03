@@ -2,17 +2,32 @@
   "modes": [
     {
       "slug": "surf",
-      "title": "Surf Lessons",
-      "badge": "Water Sports",
-      "description": "Choose a surf school and use the VoucherHub code at checkout.",
+      "title": {
+        "en": "Surf Lessons",
+        "pt": "Aulas de Surf"
+      },
+      "badge": {
+        "en": "Water Sports",
+        "pt": "Esportes Aquáticos"
+      },
+      "description": {
+        "en": "Choose a surf school and use the VoucherHub code at checkout.",
+        "pt": "Escolha uma escola de surf e use o código VoucherHub no checkout."
+      },
       "partners": [
         {
           "name": "Surf Wave Lisbon",
           "partner_slug": "surf-wave-lisbon",
-          "location": "Cabana do Pescador, Costa da Caparica",
+          "location": {
+            "en": "Cabana do Pescador, Costa da Caparica",
+            "pt": "Cabana do Pescador, Costa da Caparica"
+          },
           "price_original": "€30",
           "price_discount": "€25,5",
-          "savings": "Save €4,5",
+          "savings": {
+            "en": "Save €4,5",
+            "pt": "Economize €4,5"
+          },
           "discount_label": "15% OFF",
           "code": "Raposo15",
           "official_url": "https://surfwavelisbon.com/",
@@ -22,7 +37,6 @@
             "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5114-1-1536x1024.jpg",
             "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5903-scaled.jpg",
             "https://surfwavelisbon.com/wp-content/uploads/2023/11/DSC5235-copy-1536x1024.jpg"
-            
           ],
           "icon": "fas fa-water"
         }
@@ -30,17 +44,38 @@
     },
     {
       "slug": "Moda",
+<<<<<<< HEAD
       "title": "Vestuário e Moda",
       "badge": "Vestuário Moda",
       "description": "Partner clothing stores with exclusive discounts.",
+=======
+      "title": {
+        "en": "Fashion Clothing",
+        "pt": "Vestuário Moda"
+      },
+      "badge": {
+        "en": "Fashion",
+        "pt": "Moda"
+      },
+      "description": {
+        "en": "Partner clothing stores with exclusive discounts.",
+        "pt": "Lojas parceiras de vestuário com descontos exclusivos."
+      },
+>>>>>>> 660c727cea76b05dd7c90ed8cd7b255388149d91
       "partners": [
         {
           "name": "Twolines",
           "partner_slug": "twolines",
-          "location": "Costa da Caparica",
+          "location": {
+            "en": "Costa da Caparica",
+            "pt": "Costa da Caparica"
+          },
           "price_original": "€67,83",
           "price_discount": "€54,27",
-          "savings": "Save €13,56",
+          "savings": {
+            "en": "Save €13,56",
+            "pt": "Economize €13,56"
+          },
           "discount_label": "20% OFF",
           "code": "SURF20",
           "official_url": "https://twolines.pt/",
@@ -56,17 +91,32 @@
     },
     {
       "slug": "kitesurf",
-      "title": "Kitesurf Lessons",
-      "badge": "Extreme Sports",
-      "description": "Partner kitesurf schools with exclusive discounts.",
+      "title": {
+        "en": "Kitesurf Lessons",
+        "pt": "Aulas de Kitesurf"
+      },
+      "badge": {
+        "en": "Extreme Sports",
+        "pt": "Esportes Radicais"
+      },
+      "description": {
+        "en": "Partner kitesurf schools with exclusive discounts.",
+        "pt": "Escolas parceiras de kitesurf com descontos exclusivos."
+      },
       "partners": [
         {
           "name": "Caparica Kite Center",
           "partner_slug": "caparica-kite-center",
-          "location": "Costa da Caparica",
+          "location": {
+            "en": "Costa da Caparica",
+            "pt": "Costa da Caparica"
+          },
           "price_original": "€85",
           "price_discount": "€68",
-          "savings": "Save €17",
+          "savings": {
+            "en": "Save €17",
+            "pt": "Economize €17"
+          },
           "discount_label": "20% OFF",
           "code": "KITE15",
           "official_url": "https://escola-de-kitesurf.pt",
@@ -83,17 +133,32 @@
     },
     {
       "slug": "quad",
-      "title": "Quad Bike Tour",
-      "badge": "Adventure",
-      "description": "Explore Sintra trails at a discount.",
+      "title": {
+        "en": "Quad Bike Tour",
+        "pt": "Passeio de Quadriciclo"
+      },
+      "badge": {
+        "en": "Adventure",
+        "pt": "Aventura"
+      },
+      "description": {
+        "en": "Explore Sintra trails at a discount.",
+        "pt": "Explore trilhas de Sintra com desconto."
+      },
       "partners": [
         {
           "name": "Sintra Quad Adventures",
           "partner_slug": "sintra-quad-adventures",
-          "location": "Serra de Sintra",
+          "location": {
+            "en": "Sintra Mountain Range",
+            "pt": "Serra de Sintra"
+          },
           "price_original": "€55",
           "price_discount": "€44",
-          "savings": "Save €11",
+          "savings": {
+            "en": "Save €11",
+            "pt": "Economize €11"
+          },
           "discount_label": "20% OFF",
           "code": "QUAD10",
           "official_url": "https://quad-sintra.com",
@@ -110,17 +175,32 @@
     },
     {
       "slug": "tour guide and driver",
-      "title": "Guide and Driver",
-      "badge": "Culture & History",
-      "description": "Driver tours through historic neighborhoods with a local guide.",
+      "title": {
+        "en": "Guide and Driver",
+        "pt": "Guia e Motorista"
+      },
+      "badge": {
+        "en": "Culture & History",
+        "pt": "Cultura e História"
+      },
+      "description": {
+        "en": "Driver tours through historic neighborhoods with a local guide.",
+        "pt": "Passeios com motorista por bairros históricos com guia local."
+      },
       "partners": [
         {
           "name": "Nanan Adventures",
           "partner_slug": "nanan-adventures",
-          "location": "Sintra",
+          "location": {
+            "en": "Sintra",
+            "pt": "Sintra"
+          },
           "price_original": "€30",
           "price_discount": "€24",
-          "savings": "Save €6",
+          "savings": {
+            "en": "Save €6",
+            "pt": "Economize €6"
+          },
           "discount_label": "20% OFF",
           "code": "LISBOA20",
           "official_url": "https://www.nananadventures.com/",
@@ -136,17 +216,32 @@
     },
     {
       "slug": "yoga",
-      "title": "Yoga Studios",
-      "badge": "Wellness",
-      "description": "Yoga classes in Lisbon at a discount.",
+      "title": {
+        "en": "Yoga Studios",
+        "pt": "Estúdios de Yoga"
+      },
+      "badge": {
+        "en": "Wellness",
+        "pt": "Bem-Estar"
+      },
+      "description": {
+        "en": "Yoga classes in Lisbon at a discount.",
+        "pt": "Aulas de yoga em Lisboa com desconto."
+      },
       "partners": [
         {
-          "name": "Yoga Kula ",
+          "name": "Yoga Kula",
           "partner_slug": "yoga-kula",
-          "location": "Benfica, Lisboa",
+          "location": {
+            "en": "Benfica, Lisbon",
+            "pt": "Benfica, Lisboa"
+          },
           "price_original": "€15",
           "price_discount": "€12,75",
-          "savings": "Save €2,25",
+          "savings": {
+            "en": "Save €2,25",
+            "pt": "Economize €2,25"
+          },
           "discount_label": "15% OFF",
           "code": "YOGA20",
           "qrcode_url": "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=YOGA20",
@@ -160,7 +255,6 @@
           ],
           "icon": "fas fa-spa"
         }
-        
       ]
     }
   ]
