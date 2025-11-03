@@ -14,7 +14,77 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      pedidos: {
+        Row: {
+          codigo_voucher_gerado: string | null
+          data_pedido: string
+          email_usuario: string
+          id: string
+          status: string
+          stripe_checkout_session_id: string | null
+          stripe_payment_intent_id: string | null
+          voucher_id: string
+        }
+        Insert: {
+          codigo_voucher_gerado?: string | null
+          data_pedido?: string
+          email_usuario: string
+          id?: string
+          status?: string
+          stripe_checkout_session_id?: string | null
+          stripe_payment_intent_id?: string | null
+          voucher_id: string
+        }
+        Update: {
+          codigo_voucher_gerado?: string | null
+          data_pedido?: string
+          email_usuario?: string
+          id?: string
+          status?: string
+          stripe_checkout_session_id?: string | null
+          stripe_payment_intent_id?: string | null
+          voucher_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pedidos_voucher_id_fkey"
+            columns: ["voucher_id"]
+            isOneToOne: false
+            referencedRelation: "vouchers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vouchers: {
+        Row: {
+          criado_em: string
+          descricao: string
+          disponivel: boolean
+          id: string
+          imagem_url: string | null
+          nome: string
+          preco: number
+        }
+        Insert: {
+          criado_em?: string
+          descricao: string
+          disponivel?: boolean
+          id?: string
+          imagem_url?: string | null
+          nome: string
+          preco: number
+        }
+        Update: {
+          criado_em?: string
+          descricao?: string
+          disponivel?: boolean
+          id?: string
+          imagem_url?: string | null
+          nome?: string
+          preco?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
