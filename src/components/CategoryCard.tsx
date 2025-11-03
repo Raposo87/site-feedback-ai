@@ -25,7 +25,7 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
   return (
     <Link to={`/category?slug=${category.slug}`}>
       <Card className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-        <div className="relative h-48 sm:h-56 overflow-hidden bg-muted">
+        <div className="relative h-32 sm:h-40 overflow-hidden bg-muted">
           {images.length > 0 ? (
             <img
               src={images[0]}
@@ -36,42 +36,39 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
               }}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-6xl">
+            <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl">
               {firstPartner?.icon && <i className={firstPartner.icon} />}
             </div>
           )}
 
           {firstPartner?.discount_label && (
-            <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-orange-500 text-white text-sm font-bold shadow-lg">
+            <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-orange-500 text-white text-xs font-bold shadow-lg">
               <span className="mr-1">🔥</span>
               {lang === 'pt' ? 'Popular' : 'Popular'}
             </div>
           )}
         </div>
 
-        <div className="p-5 space-y-3">
+        <div className="p-3 sm:p-4 space-y-2">
           <div className="flex items-center gap-2">
-            <div className="text-3xl">
-              {firstPartner?.icon && <i className={firstPartner.icon} />}
-            </div>
             <Badge variant="secondary" className="text-xs">
               {getTranslated(category.badge)}
             </Badge>
           </div>
 
-          <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
+          <h3 className="font-display text-base sm:text-lg font-semibold group-hover:text-primary transition-colors line-clamp-2">
             {getTranslated(category.title)}
           </h3>
 
-          <p className="text-sm text-muted-foreground line-clamp-2">
+          <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
             {getTranslated(category.description)}
           </p>
 
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-sm text-muted-foreground">
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-xs text-muted-foreground">
               {category.partners.length} {category.partners.length === 1 ? t('experiencePage.offers') : t('experiencePage.offersPlural')}
             </span>
-            <ChevronRight className="h-5 w-5 text-primary transition-transform group-hover:translate-x-1" />
+            <ChevronRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
           </div>
         </div>
       </Card>
