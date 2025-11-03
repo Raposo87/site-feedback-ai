@@ -44,11 +44,6 @@
     },
     {
       "slug": "Moda",
-<<<<<<< HEAD
-      "title": "Vestuário e Moda",
-      "badge": "Vestuário Moda",
-      "description": "Partner clothing stores with exclusive discounts.",
-=======
       "title": {
         "en": "Fashion Clothing",
         "pt": "Vestuário Moda"
@@ -61,7 +56,6 @@
         "en": "Partner clothing stores with exclusive discounts.",
         "pt": "Lojas parceiras de vestuário com descontos exclusivos."
       },
->>>>>>> 660c727cea76b05dd7c90ed8cd7b255388149d91
       "partners": [
         {
           "name": "Twolines",
