@@ -30,10 +30,10 @@
       "subtitle": "Simple and fast in 3 steps",
       "step1Title": "Choose Your Experience",
       "step1Text": "Browse the available offers and find your perfect experience.",
-      "step2Title": "Reveal the Code",
-      "step2Text": "Click the 'Reveal Code' button within the chosen category and copy the code, or save the QR code.",
-      "step3Title": "Enjoy the Discount",
-      "step3Text": "Go to the official website, enter the code at checkout, or take the QR code to the location to be scanned and enjoy your discounted experience!"
+      "step2Title": "Buy Your Voucher",
+      "step2Text": "Click the 'Buy Now' button and complete your purchase securely.",
+      "step3Title": "Receive by Email",
+      "step3Text": "Your voucher will be sent directly to your email. Use it on the official website or at the location to enjoy your discounted experience!"
     },
     "footer": {
       "description": "Exclusive coupons for the best experiences in Portugal.",
@@ -51,9 +51,9 @@
       "disclaimer": "Promotional codes are valid only on official partner websites."
     },
     "buttons": {
-      "revealCode": "Reveal Code",
+      "buyNow": "Buy Voucher",
       "goToSite": "Go to Official Site",
-      "copyCode": "Copy Code"
+      "viewDetails": "View Details"
     },
     "toast": {
       "codeCopied": "Code copied successfully!",
@@ -104,10 +104,10 @@
       "subtitle": "Simples e rápido em 3 passos",
       "step1Title": "Escolha Sua Experiência",
       "step1Text": "Navegue pelas ofertas disponíveis e encontre sua experiência perfeita.",
-      "step2Title": "Revele o Código",
-      "step2Text": "Clique no botão 'Revelar Código' dentro da categoria escolhida e copie o código, ou salve o código QR.",
-      "step3Title": "Aproveite o Desconto",
-      "step3Text": "Vá ao site oficial, insira o código no checkout, ou leve o código QR até o local para ser lido e aproveite sua experiência com desconto!"
+      "step2Title": "Compre Seu Voucher",
+      "step2Text": "Clique no botão 'Comprar Agora' e finalize sua compra com segurança.",
+      "step3Title": "Receba por Email",
+      "step3Text": "Seu voucher será enviado direto para seu email. Use no site oficial ou no local para aproveitar sua experiência com desconto!"
     },
     "footer": {
       "description": "Cupons exclusivos para as melhores experiências em Portugal.",
@@ -125,9 +125,9 @@
       "disclaimer": "Os códigos promocionais são válidos apenas nos sites oficiais dos parceiros indicados."
     },
     "buttons": {
-      "revealCode": "Revelar Código",
+      "buyNow": "Comprar Voucher",
       "goToSite": "Ir para Site Oficial",
-      "copyCode": "Copiar Código"
+      "viewDetails": "Ver Detalhes"
     },
     "toast": {
       "codeCopied": "Código copiado com sucesso!",

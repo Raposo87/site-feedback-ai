@@ -262,33 +262,6 @@ const Partner = () => {
                     </Badge>
                   </div>
 
-                  {/* Promo Code */}
-                  <div className="bg-background/80 backdrop-blur rounded-lg p-4 border">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Tag className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium text-muted-foreground">
-                        {lang === 'pt' ? 'Código promocional:' : 'Promo code:'}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <code className="flex-1 px-4 py-3 bg-muted rounded-lg font-mono text-lg font-bold text-primary">
-                        {partner.code}
-                      </code>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        onClick={copyCode}
-                        className="h-12 w-12"
-                      >
-                        {copiedCode ? (
-                          <Check className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <Copy className="h-5 w-5" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-
                   <div className="space-y-3">
                     <Button 
                       className="w-full h-12 text-base" 
@@ -334,13 +307,13 @@ const Partner = () => {
               {/* Additional Info */}
               <Card className="p-6 bg-muted/30">
                 <h3 className="font-semibold mb-3">
-                  {lang === 'pt' ? 'Como usar o desconto:' : 'How to use the discount:'}
+                  {lang === 'pt' ? 'Como funciona:' : 'How it works:'}
                 </h3>
                 <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
-                  <li>{lang === 'pt' ? 'Copie o código promocional acima' : 'Copy the promo code above'}</li>
-                  <li>{lang === 'pt' ? 'Clique em "Ver ofertas no site oficial"' : 'Click "View offers on official website"'}</li>
-                  <li>{lang === 'pt' ? 'Escolha sua experiência' : 'Choose your experience'}</li>
-                  <li>{lang === 'pt' ? 'Cole o código no checkout para receber o desconto' : 'Paste the code at checkout to receive the discount'}</li>
+                  <li>{lang === 'pt' ? 'Clique em "Comprar Agora" e insira seu email' : 'Click "Buy Now" and enter your email'}</li>
+                  <li>{lang === 'pt' ? 'Complete o pagamento com segurança via Stripe' : 'Complete the secure payment via Stripe'}</li>
+                  <li>{lang === 'pt' ? 'Receba seu voucher por email imediatamente' : 'Receive your voucher by email immediately'}</li>
+                  <li>{lang === 'pt' ? 'Use o voucher no site oficial ou no local' : 'Use the voucher on the official website or at the location'}</li>
                 </ol>
               </Card>
             </div>

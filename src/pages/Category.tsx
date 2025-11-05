@@ -154,34 +154,9 @@ const Category = () => {
                     {getTranslated(partner.savings)}
                   </div>
 
-                  <div className="bg-muted rounded-lg p-3">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs text-muted-foreground mb-1">
-                          {lang === 'pt' ? 'Código promocional:' : 'Promo code:'}
-                        </div>
-                        <div className="font-mono font-bold text-lg">
-                          {partner.code}
-                        </div>
-                      </div>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        onClick={() => copyCode(partner.code)}
-                        className="shrink-0"
-                      >
-                        {copiedCode === partner.code ? (
-                          <Check className="h-4 w-4" />
-                        ) : (
-                          <Copy className="h-4 w-4" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-
                   <Link to={`/partner?slug=${partner.partner_slug}&category=${category.slug}`}>
                     <Button className="w-full">
-                      {lang === 'pt' ? 'Ver detalhes da oferta' : 'View offer details'}
+                      {lang === 'pt' ? 'Comprar Voucher' : 'Buy Voucher'}
                     </Button>
                   </Link>
                 </div>
