@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/site-feedback-ai">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/category" element={<Category />} />
