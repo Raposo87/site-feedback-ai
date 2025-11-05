@@ -6,9 +6,19 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Partner as PartnerType, Experience } from '@/types/experience';
-import { Copy, Check, ExternalLink, ChevronRight, MapPin, Tag } from 'lucide-react';
+import { Copy, Check, ExternalLink, ChevronRight, MapPin, Tag, ShoppingCart, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useI18n } from '@/lib/i18n';
+import { supabase } from '@/integrations/supabase/client';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const Partner = () => {
   const [searchParams] = useSearchParams();
@@ -18,6 +28,9 @@ const Partner = () => {
   const [category, setCategory] = useState<Experience | null>(null);
   const [copiedCode, setCopiedCode] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showEmailDialog, setShowEmailDialog] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
   const { lang } = useI18n();
 
@@ -67,6 +80,58 @@ const Partner = () => {
       return field[lang] || field.en || '';
     }
     return field || '';
+  };
+
+  const handleBuyClick = () => {
+    setShowEmailDialog(true);
+  };
+
+  const handlePurchase = async () => {
+    if (!email || !partner) {
+      toast({
+        title: lang === 'pt' ? 'Email obrigatório' : 'Email required',
+        description: lang === 'pt' ? 'Por favor, insira seu email' : 'Please enter your email',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      // Chamar a edge function criar-checkout
+      const { data, error } = await supabase.functions.invoke('criar-checkout', {
+        body: {
+          voucher_id: partner.partner_slug, // Usando partner_slug como voucher_id
+          email_usuario: email,
+        },
+      });
+
+      if (error) throw error;
+
+      if (data?.checkout_url) {
+        // Redirecionar para a página de checkout do Stripe
+        window.open(data.checkout_url, '_blank');
+        setShowEmailDialog(false);
+        toast({
+          title: lang === 'pt' ? 'Redirecionando...' : 'Redirecting...',
+          description: lang === 'pt' 
+            ? 'Você será redirecionado para a página de pagamento' 
+            : 'You will be redirected to the payment page',
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao criar checkout:', error);
+      toast({
+        title: lang === 'pt' ? 'Erro' : 'Error',
+        description: lang === 'pt' 
+          ? 'Não foi possível criar o checkout. Tente novamente.' 
+          : 'Unable to create checkout. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   if (!partner || !category) {
@@ -224,21 +289,33 @@ const Partner = () => {
                     </div>
                   </div>
 
-                  <Button 
-                    className="w-full h-12 text-base" 
-                    size="lg"
-                    asChild
-                  >
-                    <a 
-                      href={partner.official_url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
+                  <div className="space-y-3">
+                    <Button 
+                      className="w-full h-12 text-base" 
+                      size="lg"
+                      onClick={handleBuyClick}
                     >
-                      {lang === 'pt' ? 'Ver ofertas no site oficial' : 'View offers on official website'}
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  </Button>
+                      <ShoppingCart className="h-5 w-5 mr-2" />
+                      {lang === 'pt' ? 'Comprar Agora' : 'Buy Now'}
+                    </Button>
+                    
+                    <Button 
+                      className="w-full h-12 text-base" 
+                      size="lg"
+                      variant="outline"
+                      asChild
+                    >
+                      <a 
+                        href={partner.official_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        {lang === 'pt' ? 'Ver ofertas no site oficial' : 'View offers on official website'}
+                        <ExternalLink className="h-5 w-5" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </Card>
 
@@ -272,6 +349,71 @@ const Partner = () => {
       </section>
 
       <Footer />
+
+      {/* Email Dialog for Purchase */}
+      <Dialog open={showEmailDialog} onOpenChange={setShowEmailDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {lang === 'pt' ? 'Finalizar Compra' : 'Complete Purchase'}
+            </DialogTitle>
+            <DialogDescription>
+              {lang === 'pt' 
+                ? 'Insira seu email para prosseguir com o pagamento' 
+                : 'Enter your email to proceed with payment'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder={lang === 'pt' ? 'seu@email.com' : 'your@email.com'}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !isProcessing) {
+                    handlePurchase();
+                  }
+                }}
+              />
+            </div>
+
+            {partner && (
+              <div className="bg-muted/50 p-4 rounded-lg space-y-2">
+                <p className="text-sm font-medium">{partner.name}</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-bold text-primary">
+                    {partner.price_discount}
+                  </span>
+                  <span className="text-sm text-muted-foreground line-through">
+                    {partner.price_original}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            <Button 
+              className="w-full" 
+              onClick={handlePurchase}
+              disabled={isProcessing || !email}
+            >
+              {isProcessing ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  {lang === 'pt' ? 'Processando...' : 'Processing...'}
+                </>
+              ) : (
+                <>
+                  {lang === 'pt' ? 'Continuar para Pagamento' : 'Continue to Payment'}
+                </>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
